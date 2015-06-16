@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+	<head>
+		<title>Site Search Testing Page</title>
+        <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />		
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
+		<link rel="stylesheet" type="text/css" href="css/sitesearch.css" />
+	</head>
+	<body>
+        <!--[if lt IE 8]>
+            <p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+        <![endif]-->
+			<div class="container-fluid" id="main">
+			    <div class="row">
+					<div class="col-md-12">
+						<p> SOMETHING ELSE ON THE PAGE</p>
+					</div>
+				</div>
+				
+			    <div class="row">
+
+					<div class="col-md-12">
+				    
+					<div id="map" class="clearfix">
+				        <div id="filter">
+				            <div class="media thumbnail">
+				                <div class="media-body">
+				                    <h3 class="media-heading"><i class="fa fa-filter"></i> Search Criteria <small><a href="#" id="clear-all-filters">Clear All</a></small></h3>
+				                    <p id="filter-read-out">None. Showing all sites.</p>
+				                </div>
+				            </div>
+				            <div id="filter-form">
+				            <input name="site_id" id="site_id" type="hidden" />
+				            <div class="media thumbnail">
+				                <div class="media-body">
+
+									<fieldset>
+										<label for="filter-type">Return sites with</label>
+										<label class="radio">
+											<input type="radio" name="filter-type" value="all" checked="true" /> all of the following
+										</label>
+										<label class="radio">
+											<input type="radio" name="filter-type" value="any" /> any of the following
+										</label>
+									</fieldset>
+				                </div>
+				            </div>
+				            <!--button id="map-attr">Map attributes</button>
+				            <div>
+				            	<input type="number">
+				            	<button id="set-map-attr">Set Zoom</button>
+				           	</div-->
+				            <div class="panel-group" id="filter-accordion">
+				                <div class="panel panel-default">
+				                  <div class="panel-heading">
+				                    <a class="accordion-toggle" data-toggle="collapse" data-parent="#filter-accordion" href="#vegetation">
+				                      <i class="fa fa-caret-down"></i> Vegetation & Climate
+				                    </a>
+				                  </div>
+				                  <div id="vegetation" class="panel-collapse collapse in">
+				                    <div class="panel-body">
+
+				                        <fieldset>
+				                            <label for="igbp">IGBP Class (vegetation)</label>
+											<div id="igbp-select"></div>
+				                          	<label for="climate_koeppen">Koeppen Climate Class</label>
+											<div id="climate_koeppen-select"></div>
+				                        <div class="form-group">
+				                            <label for="precipitation">Precipitation (annual cumulative)</label>
+				                            <div class="controls controls-clear">
+				                                <div class="input-group">
+				                                    <input name="precipitation" id="precipitation" type="text" placeholder='ex: "0-10", or ">10"' class="form-control control-with-clear" pattern="(^[0-9]+ *[to\-]+ *[0-9]+$)|(^[<>]+ ?[0-9]+$)" data-validation-pattern-message='Must be in the form "0-10", ">10"' />
+				                                    <span class="input-group-addon">mm</span>
+				                                </div>
+				                                <!--button class="filter-btn">Filter</button-->
+				                                <p class="input-message">Could not understand this input. Please correct it.</p>
+				                                <div class="clear-input-btn precip">
+				                                	<span>x</span>
+				                                </div>
+				                            </div>
+				                        </div>
+				                        <div class="form-group">
+				                            <label for="ta">Air Temp. (average annual)</label>
+				                            <div class="controls controls-clear">
+				                                <div class="input-group">
+				                                    <input name="ta" id="ta" type="text" placeholder='ex: "0-10", or ">10"' class="form-control control-with-clear" pattern="(^[\-\+]?[0-9]+ *[to\-]+ *[\-\+]?[0-9]+$)|(^[<>]+ *[\-\+]?[0-9]+$)" data-validation-pattern-message='Must be in the form "0-10", ">10"' />
+				                                    <span class="input-group-addon">c</span>
+				                                </div>
+				                                <!--button class="filter-btn">Filter</button-->
+				                                <p class="input-message">Could not understand this input. Please correct it.</p>
+				                                <div class="clear-input-btn temp">
+				                                	<span>x</span>
+				                                </div>
+				                            </div>
+				                        </div>
+				                      </fieldset>
+
+				                    </div>
+				                  </div>
+				                </div>
+				              <div class="panel">
+				                <div class="panel-heading">
+				                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#filter-accordion" href="#general">
+				                    <i class="fa fa-caret-right"></i> General
+				                  </a>
+				                </div>
+				                <div id="general" class="panel-collapse collapse">
+				                  <div class="panel-body">
+
+				                      <fieldset>
+				                        <label for="keyword">Keyword(s)</label>
+				                        <input name="keyword" id="keyword" type="text" placeholder="ex: river, fire" class="form-control" />
+				                        <label for="keyword-fields">Search for keywords in</label>
+				                        <label class="radio">
+				                           <input type="radio" name="keyword-fields" value="SITE_NAME,SITE_DESC,SITE_ID" checked="true" /> Site Id, Name, and Description
+				                        </label>
+				                        <label class="radio">
+				                           <input type="radio" name="keyword-fields" value="SITE_ID" /> Site Id
+				                        </label>
+				                        <label class="radio">
+				                           <input type="radio" name="keyword-fields" value="SITE_NAME" /> Site Name
+				                        </label>
+				                        <label class="radio">
+				                           <input type="radio" name="keyword-fields" value="SITE_DESC" /> Site Description
+				                        </label>
+										
+				                        <label for="people">Tower Team Member</label>
+				                        <input name="people" id="people" type="text" placeholder="ex: John, Jane" data-provide="typeahead" autocomplete="off" class="form-control" />
+
+				                        <div class="form-group">
+					                        <label for="data-from-years">Has L2 data from the year(s) <i class="fa fa-question-sign" title="L2 Data: Half-hourly standardized data that have been passed through QA/QC checks and outstanding issues resolved to enable usage by external users and production of the files for the FLUXNET effort. Data has been reviewed for consistent units, naming convention conformance, reporting intervals, and format." data-toggle="tooltip"></i></label>
+				                            <div class="controls controls-clear">
+				                                <input name="data-from-years" id="data-from-years" type="text" placeholder='ex: "1999" or "1999-2003"' class="form-control control-with-clear" pattern="(^[0-9]+ *[to\-]+ *[0-9]+$)|(^[0-9]+$)" data-validation-pattern-message='Must be in the form "1999", "1999-2000", "1999 to 2000"' />
+				                                <p class="input-message">Could not understand this input. Please correct it.</p>
+				                                <div class="clear-input-btn">
+				                                	<span>x</span>
+				                                </div>
+				                            </div>
+				                        </div>
+				                        <label for="data-from">Must have data from</label>
+				                        <label class="radio">
+				                           <input type="radio" name="data-from" value="any" checked="true" /> any year in range
+				                       </label>
+				                        <label class="radio">
+				                           <input type="radio" name="data-from" value="all" /> all years in range
+				                        </label>
+				                       <!--<label class="radio">
+				                           <input type="number" name="year-span" id="year-span" class="input-mini" value="3" /> year span
+				                        </label>-->
+				                        <!--<label for="active">Site status</label>
+				                        <label class="radio-inline">
+				                            <input type="radio" name="active" value="" checked /> All
+				                        </label>
+				                        <label class="radio-inline">
+				                            <input type="radio" name="active" value="Active" /> Active
+				                        </label>
+				                        <label class="radio-inline">
+				                            <input type="radio" name="active" value="Inactive" /> Inactive 
+				                         </label>-->
+				                      </fieldset>
+
+				                  </div>
+				                </div>
+				              </div>
+				              <div class="panel">
+				                <div class="panel-heading">
+				                  <a class="accordion-toggle" data-toggle="collapse" data-parent="#filter-accordion" href="#geography">
+				                    <i class="fa fa-caret-right"></i> Geography
+				                  </a>
+				                </div>
+				                <div id="geography" class="panel-collapse collapse">
+				                  <div class="panel-body">
+				                      <fieldset>
+				                        <label for="region">Country, State, Province</label>
+				                        <input name="region" id="region" type="text" placeholder="ex: California, Ohio" class="form-control" />
+				                        <div class="form-group">
+				                            <label for="elevation">Elevation</label>
+				                            <div class="controls controls-clear">
+				                                <div class="input-group controls-clear">
+				                                    <input name="elevation" id="elevation" type="text" placeholder='ex: "0-10", "-5 to -10", ">10"' class="form-control control-with-clear" pattern="(^[\-\+]?[0-9]+ *[to\-]+ *[\-\+]?[0-9]+$)|(^[<>]+ *[\-\+]?[0-9]+$)" data-validation-pattern-message='Must be in the form "0-10", "-5 to -10", ">10"' />
+				                                    <span class="input-group-addon">m</span>
+				                                </div>
+				                                <p class="input-message">Could not understand this input. Please correct it.</p>
+				                                <div class="clear-input-btn elevation">
+				                                	<span>x</span>
+				                                </div>
+				                            </div>
+				                        </div>
+
+				                      </fieldset>
+              
+				                  </div>
+				                </div>
+				              </div>
+				            </div>
+				            <div class="form-submit-container">
+				           		<button id="submit-btn" class="btn btn-primary">Submit</button>
+				            </div>
+				        </div>
+    
+				        </div>
+
+				        <div id="sites">
+				            <div id="totals" class="media thumbnail">
+				                <h3><i class="fa fa-th-list"></i> <span id="total-sites" class="">0 Sites</span></h3>
+				                <!-- megha testing new UI features here-->
+								<!--span id="list-actions">
+									<a href="#" class="copy-list"><small><i class="fa fa-copy" title="Copy this list to your clip board" data-toggle="tooltip"></i> Copy sites to clipboard</small></a>
+								</span-->
+								<button class="download-all-btn btn btn-primary">Download all site data</button>
+								<p class="download-sites-text"><span class="sites-count"></span> sites in your download queue.<button class="site-download-btn btn btn-link">Download data for <span class="sites-count"></span> sites</button></p>
+				                
+				                <!--<p> <a href="#">ID <i class="fa fa-sort-up"></i></a> &nbsp;&nbsp;<a href="#">TA(c) <i class="fa fa-sort gray"></i></a> &nbsp;&nbsp;<a href="#">Precip. <i class="fa fa-sort gray"></i></a> &nbsp;&nbsp;<a href="#">Years <i class="fa fa-sort gray"></i></a></p>-->
+				            </div>
+							<div class="alert alert-success" id="list-copied-alert" style="display:none">
+							  <button type="button" class="close">&times;</button>
+							  <strong>List Copied!</strong> Paste the contents of your clipboard to Excel or a text editor.  Table is tab delimited.
+							</div>
+				            <!--<ul class="thumbnails thumbnails-compact">
+				            </ul>-->
+							<div id="sites-table-container">
+								<table id="sites-table" class="media-table" width="100%">
+									<thead>
+										<tr>
+											<th data-variable-name="SITE_ID" data-desc="false" class="sortable" >Site Id <i class="fa fa-sort-up"></i></th>
+											<th data-variable-name="IGBP" class="sortable"><span class="glossary-term" title="IGBP Vegetation Class" data-toggle="tooltip">Veg.</span> <i class="fa fa-sort"></i></th>
+											<th data-variable-name="CLIMATE_KOEPPEN" class="sortable"><span class="glossary-term" title="Koeppen Climate Class" data-toggle="tooltip">Clim.</span> <i class="fa fa-sort"></i></th>
+											<th data-variable-name="MAP" class="sortable"><span class="glossary-term" title="Mean Average Precipitation (mm)" data-toggle="tooltip">MAP</span> <i class="fa fa-sort"></i></th>
+											<th data-variable-name="MAT" class="sortable"><span class="glossary-term" title="Mean Average Tempurature (&deg;C)" data-toggle="tooltip">MAT</span> <i class="fa fa-sort"></i></th>
+											<th data-variable-name="LOCATION_ELEV" class="sortable"><span class="glossary-term" title="Elevation (m)" data-toggle="tooltip">Elev.</span> <i class="fa fa-sort"></i></th>
+											<th data-variable-name="START_YEAR" class="start-year sortable"><span class="glossary-term" title="First year for which there is data" data-toggle="tooltip">Start</span> <i class="fa fa-sort"></i><br /><a href="#" class="all-start-toggle"><span class="tiny">Show All</span></a></th>
+											<th data-variable-name="START_YEAR" class="all-years sortable" style="display:none;"><span class="glossary-term" title="Year for which there is data" data-toggle="tooltip">Years</span> <i class="fa fa-sort"></i><br /><small><a href="#" class="all-start-toggle"><span class="tiny">Show Start</span></a></small></th>
+											<th></td>
+										</tr>
+									</thead>
+								</table>
+							</div>
+						    <div id="sites-loading" class="disabled-overlay">
+						    <h2 class="loading-message"><i class="fa fa-spinner fa-spin fa-2x"></i> loading...</h2>
+						    </div>    
+				        </div>
+
+
+			        </div>
+
+
+					</div>
+			    </div>
+			</div><!-- close the container div -->
+
+			
+<script type="text/html" id="igbpSelect">
+<select name="igbp" id="igbp" class="form-control" data-placeholder="Choose one or more..." multiple>
+<option value="" data-original-text="All IGBP Classes">All IGBP Classes</option>
+{{#options}}
+    <option value="{{shortname}}" data-original-text="{{shortname}} - {{description}}">{{shortname}} - {{description}}</option>
+{{/options}}
+</select>
+</script>
+
+<script type="text/html" id="climateClassSelect">
+  <select name="climate_koeppen" id="climate_koeppen" class="form-control" data-placeholder="Choose one or more..." multiple>
+      <option value="" data-original-text="All Climate Classes">All Climate Classes</option>
+		{{#options}}
+		    <option value="{{shortname}}" data-original-text="{{description}} {{shortname}}">{{description}} {{shortname}}</option>
+		{{/options}}
+  </select>
+</script>
+
+<script type="text/html" id="totalSitesHTML">
+<span>{{ numberSites }} {{ sites }}</span>
+</script>
+
+<script type="text/html" id="siteListItem">
+    <div class="media thumbnail" id="site-list-item-{{ site_id }}">
+        {{#image}}
+        <span class="pull-left">
+            <span class="media-object site-thumbnail"><img src="{{ image }}" width="100%" /></span>
+        </span>
+        {{/image}}
+        {{^image}}
+        <span class="pull-left" style="text-align:center">
+            <span class="media-object site-thumbnail disabled"><small>No Image</small></span>
+        </span>
+        {{/image}}
+        <div class="media-body">
+            <div class="controls pull-right">
+                <i class="fa fa-search-plus zoom-to-site"></i>
+                <i class="fa fa-trash-o trash-this-site"></i>
+                <i class="fa fa-download download-site"></i>
+            </div>
+            <p class="media-heading"><i title="{{#active}}Active Site{{/active}}{{^active}}Inactive Site{{/active}}" data-toggle="tooltip" class="{{#active}}fa fa-rss green{{/active}}{{^active}}fa fa-rss gray{{/active}}"></i> <a href="{{ URL }}" target="_blank">{{ SITE_ID }}</a><br />
+            <strong>{{ SITE_NAME }}</strong>
+            </p>
+            <table cellspacing="0" cellpadding="0" border="0">
+                <tr>
+                    <th width="50">IGBP</th><td><span class="glossary-term" title="{{#GRP_IGBP}}{{ IGBP }}{{/GRP_IGBP}}: {{ igbp_name }}" data-toggle="tooltip">{{#GRP_IGBP}}{{ IGBP }}{{/GRP_IGBP}}</span></td>
+                </tr>
+                <tr>
+                    <th>Climate</th><td><span class="glossary-term" title="{{ CLIMATE_KOEPPEN }}: {{ climate_class_name }}" data-toggle="tooltip">{{#GRP_CLIM_AVG}}{{ CLIMATE_KOEPPEN }}{{/GRP_CLIM_AVG}}</span></td>
+                </tr>
+                <tr>
+                    <th>Precip.</th><td>{{#GRP_CLIM_AVG}}{{ MAP }}mm{{/GRP_CLIM_AVG}}</td>
+                </tr>
+                <tr>
+                    <th>TA(c)</th><td>{{#GRP_CLIM_AVG}}{{ MAT }}c{{/GRP_CLIM_AVG}}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</script>
+
+<script type="text/html" id="siteTableRow">
+<tr class="table-cells">
+	<td><p class="media-heading"><i class="site-more-info-icon fa fa-caret-right"></i> <a href="{{ URL }}" target="_blank" data-toggle="tooltip" title="{{ SITE_NAME }}">{{ SITE_ID }}</a></p>
+    </td>
+    <td><span class="glossary-term" title="{{#GRP_IGBP}}{{ IGBP }}{{/GRP_IGBP}}: {{#GRP_IGBP}}{{ IGBP_DESCRIPTION }}{{/GRP_IGBP}}" data-toggle="tooltip">{{#GRP_IGBP}}{{ IGBP }}{{/GRP_IGBP}}</span></td>
+    <td><span class="glossary-term" title="{{#GRP_CLIM_AVG}}{{ CLIMATE_KOEPPEN }}{{/GRP_CLIM_AVG}}: {{#GRP_CLIM_AVG}}{{ CLIMATE_KOEPPEN_DESCRIPTION }}{{/GRP_CLIM_AVG}}" data-toggle="tooltip">{{#GRP_CLIM_AVG}}{{ CLIMATE_KOEPPEN }}{{/GRP_CLIM_AVG}}</span></td>
+    <td>{{#GRP_CLIM_AVG}}{{#MAP}}{{ MAP }}mm{{/MAP}}{{/GRP_CLIM_AVG}}</td>
+    <td>{{#GRP_CLIM_AVG}}{{#MAT}}{{ MAT }}&deg;C{{/MAT}}{{/GRP_CLIM_AVG}}</td>
+    <td>{{#GRP_LOCATION}}{{#LOCATION_ELEV}}{{ LOCATION_ELEV }}m{{/LOCATION_ELEV}}{{/GRP_LOCATION}}</td>
+    <td class="start-year">{{FIRST_YEAR}}</td>
+    <td class="all-years" style="display:none;">{{#GRP_PUBLISH_L2}}{{.}}, {{/GRP_PUBLISH_L2}}</td>
+    <td>
+        <i class="fa fa-download download-site download-option" data-site-id="{{ SITE_ID }}"></i>
+        <i class="fa fa-times remove-download-site download-option" data-site-id="{{ SITE_ID }}"></i>
+        <i class="fa fa-search-plus zoom-to-site"></i> <i class="fa fa-trash-o trash-this-site"></i>
+    </td>
+</tr>
+<tr class="drawer" style="display:none;">
+	<td colspan="9">
+	<strong><a href="{{ URL }}"target="_blank">{{{ SITE_NAME }}</a></strong>
+	{{#PI}}
+	<br />
+	PI: {{ TEAM_MEMBER_NAME }}{{#TEAM_MEMBER_EMAIL}} (<a href="mailto:{{TEAM_MEMBER_EMAIL}}">{{TEAM_MEMBER_EMAIL}}</a>){{/TEAM_MEMBER_EMAIL}}
+	{{/PI}}
+	</td>
+</tr>
+</script>
+
+<script type="text/html" id="noSitesList">
+<li>
+<div class="media thumbnail">
+<div class="media-body">
+<i class="fa fa-warning-sign"></i> There are no sites that match your filter(s).
+</div>
+</div>
+</li>
+</script>
+
+<script type="text/html" id="noSitesRow">
+<tr><td colspan="9"><i class="fa fa-warning-sign"></i> There are no sites that match your filter(s).</td></tr>
+</script>
+
+<script type="text/html" id="filterLabel">
+<span>{{#remove}}<i class="fa fa-times"></i> {{/remove}}{{ label }} : "{{ value }}"</span>
+</script>
+
+<script type="text/html" id="noFilters">
+<span>None. Showing all sites.</span>
+</script>
+
+<script type="text/html" id="pushPin">
+<span>{{ site_id }}</span>
+</script>
+
+<script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.5.2/underscore-min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.2/jquery-ui.min.js"></script>
+<script src="js/vendor/bootstrap.min.js"></script>
+<script type="text/javascript" src="js/vendor/ICanHaz.min.js"></script>
+<script type="text/javascript" src="js/vendor/backbone-min.js"></script>
+<script type="text/javascript" src="js/vendor/jqBootstrapValidation.js"></script>
+<script type="text/javascript" src="js/vendor/ZeroClipboard.min.js"></script>
+<script type="text/javascript" src="http://ecn.dev.virtualearth.net/mapcontrol/mapcontrol.ashx?v=7.0"></script>
+<script type="text/javascript" src="js/sitesearch-models-collections.js"></script>
+<script type="text/javascript" src="js/sitesearch.js"></script>
+<script type="text/javascript" src="js/jquery.redirect.js"></script>
+	</body>
+</html>
